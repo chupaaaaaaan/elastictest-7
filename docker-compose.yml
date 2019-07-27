@@ -1,0 +1,82 @@
+version: "2.2"
+services:
+
+  elasticsearch:
+    build:
+      context: ./build
+      dockerfile: Dockerfile-elasticsearch
+
+    container_name: elasticsearch
+
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+    environment:
+      - discovery.type=single-node
+
+    volumes:
+      # elasticsearch data
+      - esdata:/var/lib/elasticsearch/data
+
+      # elasticsearch config
+      - ./config/elasticsearch/elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml
+      - ./config/elasticsearch/elasticsearch.keystore:/etc/elasticsearch/elasticsearch.keystore
+      - ./config/elasticsearch/role_mapping.yml:/etc/elasticsearch/role_mapping.yml
+      - ./config/elasticsearch/roles.yml:/etc/elasticsearch/roles.yml
+      - ./config/elasticsearch/users:/etc/elasticsearch/users
+      - ./config/elasticsearch/users_roles:/etc/elasticsearch/users_roles
+
+      - ./data:/data
+
+    networks:
+      - esnet
+
+  kibana:
+    image: kibana:7.2.0
+
+    container_name: kibana
+
+    ports:
+      - "5601:5601"
+
+    volumes:
+      # kibana config
+      - ./config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+
+      - ./data:/data
+
+    networks:
+      - esnet
+
+
+  logstash:
+    build:
+      context: ./build
+      dockerfile: Dockerfile-logstash
+
+    container_name: logstash
+
+    expose:
+      - "5044"
+
+    volumes:
+      # logstash config
+      - ./config/logstash/logstash.yml:/etc/logstash/logstash.yml
+      - ./config/logstash/pipelines.yml:/etc/logstash/pipelines.yml
+      - ./config/logstash/conf.d:/etc/logstash/conf.d
+
+      # filebeat config
+      - ./config/filebeat/filebeat.yml:/etc/filebeat/filebeat.yml
+
+      - ./data:/data
+
+    networks:
+      - esnet
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  esnet:

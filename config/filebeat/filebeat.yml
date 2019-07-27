@@ -1,0 +1,9 @@
+filebeat.inputs:
+- type: log
+  enabled: false
+  paths:
+    - /data/ycab/yellow_tripdata_2016-11.csv
+
+output.logstash:
+  hosts:
+    - "localhost:5044"
