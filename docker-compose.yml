@@ -21,7 +21,10 @@ services:
 
       # elasticsearch config
       - ./config/elasticsearch/elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml
+
+      # keystore
       # - ./config/elasticsearch/elasticsearch.keystore:/etc/elasticsearch/elasticsearch.keystore
+
       - ./config/elasticsearch/role_mapping.yml:/etc/elasticsearch/role_mapping.yml
       - ./config/elasticsearch/roles.yml:/etc/elasticsearch/roles.yml
       - ./config/elasticsearch/users:/etc/elasticsearch/users
@@ -43,6 +46,9 @@ services:
     volumes:
       # kibana config
       - ./config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+
+      # keystore
+      - ./config/kibana/kibana.keystore:/usr/share/kibana/data/kibana.keystore
 
       - ./data:/data
 
