@@ -100,3 +100,8 @@ logstash_internal:
 ```
 curl -u elastic:<ES_PASSWORD> http://localhost:5601/api/kibana/dashboards/export?dashboard=<DASHBOARD_ID> > export.json
 ```
+
+### ダッシュボードのインポート (to Awesome Space)
+```
+curl -H "Content-Type: application/json" -H "kbn-xsrf: true" -u elastic:<ES_PASSWORD> http://localhost:5601/s/<SPACE_ID>/api/kibana/dashboards/import --data-binary @export.json
+```
