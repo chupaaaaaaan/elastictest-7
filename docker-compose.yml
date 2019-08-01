@@ -72,6 +72,10 @@ services:
       - ./config/logstash/pipelines.yml:/etc/logstash/pipelines.yml
       - ./config/logstash/conf.d:/etc/logstash/conf.d
 
+      # keystore
+      - ./config/logstash/logstash.keystore:/etc/logstash/logstash.keystore
+
+
       # filebeat config
       - ./config/filebeat/filebeat.yml:/etc/filebeat/filebeat.yml
 

@@ -1,3 +1,15 @@
+# 設定ファイル考慮点
+
+## elasticsearch.yml
+
+## kibana.yml
+
+## logstash.yml
+
+## *.conf (logstash)
+
+
+
 # 最初にやること
 
 ## elasticsearch
@@ -39,18 +51,52 @@ curl -u elastic:<ELASTIC_PASSWORD> http://localhost:9200/_cat/nodes?v
 
 ### 必要なユーザ・ロールの作成
 - logstash データ投入用ロール
+```
+logstash_writer:
+    cluster:
+        privilege:
+            - manage_index_templates
+            - monitor
+            - manage_ilm
+        index:
+            - name: nyc-taxi-yellow-*
+              privilege:
+                  - write
+                  - delete
+                  - create_index
+                  - manage
+                  - manage_ilm
+```
+    
 - logstash データ投入用ユーザ
-- logstash データ投入用ユーザ用パスワード
+```
+logstash_internal:
+    password: logstash_internal
+    fullname: logstash_internal
+    email: logstash_internal@mydomain.com
+    role:
+        - logstash_writer
+```
 
 - kibana データ閲覧用ロール
 - kibana データ閲覧用ユーザ
-- kibana データ閲覧用ユーザ用パスワード
 
 
 ### logstash keystore設定
+事前に作成したlogstashデータ投入用ユーザを設定する
+キー名は*.confでoutputプラグイン (elasticsearch) にて指定したもの
 ```
 /usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash create
 ```
 ```
-/usr/share/logstash/bin/logstash-keystore add LS_WRITER_PWD
+/usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash add LS_INT_USR
+```
+```
+/usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash add LS_INT_PWD
+```
+
+
+### ダッシュボードのエクスポート (from Default Space)
+```
+curl -u elastic:<ES_PASSWORD> http://localhost:5601/api/kibana/dashboards/export?dashboard=<DASHBOARD_ID> > export.json
 ```
