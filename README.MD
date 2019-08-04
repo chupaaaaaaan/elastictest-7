@@ -10,7 +10,7 @@
 [1] bootstrap checks failed
 [1]: the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
 ```
-- trial lisence以外でX-Pack Securityを有効にする場合は、transport (ノード間通信) のSSL設定必須
+- trial license以外でX-Pack Securityを有効にする場合は、transport (ノード間通信) のSSL設定必須
   - 以下のようなエラーメッセージが出る
 ```
 [1] bootstrap checks failed
