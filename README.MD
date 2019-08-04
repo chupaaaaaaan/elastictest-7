@@ -10,7 +10,7 @@
 [1] bootstrap checks failed
 [1]: the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
 ```
-- basic lisenceでX-Pack Securityを有効にする場合は、transport (ノード間通信) のSSL設定必須
+- trial lisence以外でX-Pack Securityを有効にする場合は、transport (ノード間通信) のSSL設定必須
   - 以下のようなエラーメッセージが出る
 ```
 [1] bootstrap checks failed
@@ -111,7 +111,6 @@ logstash_internal:
 
 - kibana データ閲覧用ロール
 - kibana データ閲覧用ユーザ
-
 
 
 ## logstash
