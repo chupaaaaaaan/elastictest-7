@@ -2,3 +2,4 @@
 
 data/*
 *.keystore
+*.p12
