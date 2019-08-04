@@ -30,7 +30,9 @@ Cause: master_not_discovered_exception
 ## logstash.yml
 
 ## *.conf (logstash)
-
+- outputプラグインの `elasticsearch` 内に、事前に作成しておいたユーザ・パスワードの記載が必要。
+  - elasticsearchにデータ投入するロールが付与されている必要あり。
+  - ユーザはkibanaで作成できる。
 
 
 # 最初にやること
