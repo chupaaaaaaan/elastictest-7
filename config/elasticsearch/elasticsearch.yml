@@ -95,7 +95,8 @@ discovery.type=single-node
 # ---------------------------------- X-Pack security -----------------------------------
 xpack.security.enabled: true
 # SSL/TLS between nodes in a cluster
-xpack.security.transport.ssl.enabled: true
-xpack.security.transport.ssl.verification_mode: certificate
-xpack.security.transport.ssl.keystore.path: certs/elastic-certificates.p12 
-xpack.security.transport.ssl.truststore.path: certs/elastic-certificates.p12 
+# It is not necessary in the case of single-node.
+xpack.security.transport.ssl.enabled: false
+# xpack.security.transport.ssl.verification_mode: certificate
+# xpack.security.transport.ssl.keystore.path: certs/elastic-certificates.p12 
+# xpack.security.transport.ssl.truststore.path: certs/elastic-certificates.p12 
