@@ -1,4 +1,4 @@
-FROM openjdk:8-stretch
+FROM openjdk:11-stretch
 WORKDIR /
 
 COPY myApp-elasticsearch.sh /myApp.sh
@@ -10,7 +10,7 @@ RUN : install filebeat and logstash and settings && \
         : "================elasticsearch================" && \
         curl -s https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
         echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list && \
-        apt update && apt install -y elasticsearch=7.2.0 && \
+        apt update && apt install -y elasticsearch=7.3.1 && \
         : "================script================" && \
         chmod 755 /myApp.sh && \
         : "================cleanup================" && \

@@ -1,4 +1,4 @@
-FROM openjdk:8-stretch
+FROM openjdk:11-stretch
 WORKDIR /
 
 COPY myApp-logstash.sh /myApp.sh
@@ -10,10 +10,10 @@ RUN : install filebeat and logstash and settings && \
         : "================logstash================" && \
         curl -s https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
         echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list && \
-        apt update && apt install -y logstash=1:7.2.0-1 && \
+        apt update && apt install -y logstash=1:7.3.1-1 && \
         : "================filebeat================" && \
-        curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.2.0-amd64.deb && \
-        dpkg -i filebeat-7.2.0-amd64.deb && \
+        curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.3.1-amd64.deb && \
+        dpkg -i filebeat-7.3.1-amd64.deb && \
         : "================script================" && \
         chmod 755 /myApp.sh && \
         : "================cleanup================" && \
