@@ -25,11 +25,11 @@ services:
       - ./config/elasticsearch/elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml
 
       # keystore
-      - ./config/elasticsearch/elasticsearch.keystore:/etc/elasticsearch/elasticsearch.keystore
+      # - ./config/elasticsearch/elasticsearch.keystore:/etc/elasticsearch/elasticsearch.keystore
 
       # certificates
-      - ./config/elasticsearch/elastic-stack-ca.p12:/etc/elasticsearch/certs/elastic-stack-ca.p12
-      - ./config/elasticsearch/elastic-certificates.p12:/etc/elasticsearch/certs/elastic-certificates.p12
+      # - ./config/elasticsearch/elastic-stack-ca.p12:/etc/elasticsearch/certs/elastic-stack-ca.p12
+      # - ./config/elasticsearch/elastic-certificates.p12:/etc/elasticsearch/certs/elastic-certificates.p12
 
     networks:
       - esnet
