@@ -49,7 +49,7 @@ services:
       - ./config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
 
       # keystore
-      - ./config/kibana/kibana.keystore:/usr/share/kibana/data/kibana.keystore
+      # - ./config/kibana/kibana.keystore:/usr/share/kibana/data/kibana.keystore
 
     networks:
       - esnet
@@ -74,7 +74,7 @@ services:
       - ./config/logstash/conf.d:/etc/logstash/conf.d
 
       # keystore
-      - ./config/logstash/logstash.keystore:/etc/logstash/logstash.keystore
+      # - ./config/logstash/logstash.keystore:/etc/logstash/logstash.keystore
 
       # filebeat config
       - ./config/filebeat/filebeat.yml:/etc/filebeat/filebeat.yml

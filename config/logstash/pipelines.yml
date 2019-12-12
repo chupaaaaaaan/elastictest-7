@@ -1,3 +1,2 @@
 - pipeline.id: main
-  path.config: "/etc/logstash/conf.d/ycab-logstash.conf"
-  # path.config: "/etc/logstash/conf.d/logstash.conf"
+  path.config: "/etc/logstash/conf.d/logstash.conf"

@@ -93,7 +93,7 @@ discovery.type: single-node
 
 
 # ---------------------------------- X-Pack security -----------------------------------
-xpack.security.enabled: true
+xpack.security.enabled: false
 # SSL/TLS between nodes in a cluster
 # It is not necessary in the case of single-node.
 xpack.security.transport.ssl.enabled: false

@@ -2,7 +2,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /data/ycab/yellow_tripdata_2016-11.csv
+    - /data/test-data.log
 
 output.logstash:
   hosts:
