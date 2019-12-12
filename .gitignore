@@ -3,3 +3,10 @@
 data/*
 *.keystore
 *.p12
+
+config/elasticsearch/elasticsearch.yml
+config/filebeat/filebeat.yml
+config/kibana/kibana.yml
+config/logstash/conf.d/logstash.conf
+config/logstash/logstash.yml
+config/logstash/pipelines.yml
